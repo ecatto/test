@@ -12,15 +12,18 @@ public class Song
 {
     
     private long id;
-    private String title, artist;
-    private int sales;
+    private String title, artist, genre;
+    private int sales, year, chart;
     
-    public Song(long idIn, String titleIn, String artistIn)
+    public Song(long idIn, String titleIn, String artistIn, int yearIn, String genreIn, int chartIn)
     {
         id = idIn;
         title = titleIn;
         artist = artistIn;
         sales = 0;
+        year = yearIn;
+        genre = genreIn;
+        chart = chartIn;
     }
     
     public void sell(int amount)
@@ -30,7 +33,7 @@ public class Song
     
     public String toString()
     {
-        return "ID: " + id + " Title: " + title + " Artist: " + artist + " Sales: " + sales;
+        return "ID: " + id + " Title: " + title + " Artist: " + artist + " Sales: " + sales + " Year: " + year + " Genre: " + genre + " Chart: " + chart;
     }  
     
     public long getId()
@@ -47,5 +50,24 @@ public class Song
     {
         return artist;
     }
-  
+
+    public String getGenre()
+    {
+        return genre;
+    }
+
+    public int getYear()
+    {
+        return year;
+    }
+
+    public void setSales(int newSales)
+    {
+        sales = newSales;
+    }
+
+    public void setChart(int newChart)
+    {
+        chart = newChart;
+    } 
 }

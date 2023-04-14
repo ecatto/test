@@ -18,12 +18,12 @@ public class HitTastic
     private ArrayList<User> users = new ArrayList<>();
     private User currentUser = null;
     
-    public ArrayList<Song> findSongByTitle(String title)
+    public ArrayList<Song> findSongByYear(int year)
     {
         ArrayList<Song> foundSongs = new ArrayList<>();
         for(Song s: songs)
         {
-            if(s.getTitle().equals(title))
+            if(s.getYear() == year)
             {
                 foundSongs.add(s);
             }
@@ -31,12 +31,12 @@ public class HitTastic
         return foundSongs;
     }
     
-    public ArrayList<Song> findSongByArtist(String artist)
+    public ArrayList<Song> findSongByGenre(String genre)
     {
         ArrayList<Song> foundSongs = new ArrayList<>();
         for(Song s: songs)
         {
-            if(s.getArtist().equals(artist))
+            if(s.getGenre().equals(genre))
             {
                 foundSongs.add(s);
             }
@@ -85,6 +85,11 @@ public class HitTastic
     {
         return users;
     }
+
+    public ArrayList<Song> getSongs()
+    {
+        return songs;
+    }
     
     public boolean changeUserDetails(String username, String newPassword, boolean newAdminStatus)
     {
@@ -98,6 +103,18 @@ public class HitTastic
         return false;
     }
     
+    public boolean changeSongDetails(long id, int newSales, int newChart)
+    {
+        Song s = findSongById(id);
+        if (s != null)
+        {
+            s.setSales(newSales);
+            s.setChart(newChart);
+            return true;
+        }
+        return false;
+    }
+
     public ArrayList<Order> getCurrentUserOrders()
     {
         if(currentUser != null)
